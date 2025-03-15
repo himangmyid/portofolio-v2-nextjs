@@ -5,13 +5,26 @@ import { motion } from "framer-motion";
 import { FaStar, FaCodeBranch, FaFile, FaCalendarAlt, FaUpload, FaGithub, FaFilter } from "react-icons/fa";
 import { BiSort } from "react-icons/bi";
 
+interface Repo {
+  id: number;
+  name: string;
+  description: string | null;
+  language: string | null;
+  stargazers_count: number;
+  forks_count: number;
+  size: number;
+  updated_at: string;
+  created_at: string;
+  html_url: string;
+}
+
 export default function ProjectsOverlayComponent() {
   const overlayFinished = useContext(OverlayContext);
-  const [repos, setRepos] = useState([]);
+  const [repos, setRepos] = useState<Repo[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const [sortBy, setSortBy] = useState("newest");
+  const [sortBy, setSortBy] = useState<"newest" | "stars" | "forks">("newest");
   const [filterLanguage, setFilterLanguage] = useState("all");
   const [showFilters, setShowFilters] = useState(false);
   const reposPerPage = 6;
@@ -29,10 +42,14 @@ export default function ProjectsOverlayComponent() {
         throw new Error("Failed to fetch repositories");
       }
       
-      const data = await response.json();
+      const data: Repo[] = await response.json();
       setRepos(data);
     } catch (err) {
-      setError(err.message);
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError("An unknown error occurred");
+      }
     } finally {
       setLoading(false);
     }
@@ -43,7 +60,7 @@ export default function ProjectsOverlayComponent() {
   }, []);
 
   // Extract unique languages from repos
-  const languages = [...new Set(repos.map(repo => repo.language).filter(Boolean))];
+  const languages = [...new Set(repos.map(repo => repo.language).filter(Boolean))] as string[];
 
   // Sort and filter repos
   const getSortedAndFilteredRepos = () => {
@@ -57,7 +74,9 @@ export default function ProjectsOverlayComponent() {
     // Apply sorting
     switch (sortBy) {
       case "newest":
-        return filteredRepos.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
+        return filteredRepos.sort((a, b) => 
+          new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime()
+        );
       case "stars":
         return filteredRepos.sort((a, b) => b.stargazers_count - a.stargazers_count);
       case "forks":
@@ -76,21 +95,21 @@ export default function ProjectsOverlayComponent() {
   const totalPages = Math.ceil(sortedAndFilteredRepos.length / reposPerPage);
 
   // Format date
-  const formatDate = (dateString) => {
+  const formatDate = (dateString: string) => {
     const date = new Date(dateString);
     return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
   };
 
   // Format file size
-  const formatFileSize = (size) => {
+  const formatFileSize = (size: number) => {
     if (size < 1024) return `${size} B`;
     else if (size < 1024 * 1024) return `${(size / 1024).toFixed(0)} KB`;
     else return `${(size / (1024 * 1024)).toFixed(2)} MB`;
   };
 
   // Language badge background colors
-  const getLanguageColor = (language) => {
-    const colors = {
+  const getLanguageColor = (language: string) => {
+    const colors: Record<string, string> = {
       TypeScript: "bg-blue-800 text-blue-200",
       JavaScript: "bg-yellow-700 text-yellow-100",
       HTML: "bg-red-800 text-red-200",
@@ -147,15 +166,16 @@ export default function ProjectsOverlayComponent() {
                   <label className="block text-sm font-medium mb-2 text-blue-400">Sort by:</label>
                   <div className="flex items-center gap-2 bg-gray-900 rounded-md p-1 border border-gray-700">
                     <BiSort className="text-blue-400 ml-2" />
-                    <select
-                      value={sortBy}
-                      onChange={(e) => setSortBy(e.target.value)}
-                      className="bg-gray-900 text-white rounded-md px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    >
-                      <option value="newest">Newest</option>
-                      <option value="stars">Most Stars</option>
-                      <option value="forks">Most Forks</option>
-                    </select>
+                   
+<select
+  value={sortBy}
+  onChange={(e) => setSortBy(e.target.value as "newest" | "stars" | "forks")}
+  className="bg-gray-900 text-white rounded-md px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500"
+>
+  <option value="newest">Newest</option>
+  <option value="stars">Most Stars</option>
+  <option value="forks">Most Forks</option>
+</select>
                   </div>
                 </div>
                 <div>
