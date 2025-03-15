@@ -1,6 +1,17 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
+I am using
+- React Icons
+- Framer Motion
+- Tailwind CSS version 4
+- Next.js version 15
+- React Bit
+
+Refren
+- v0.dev
+- radifa.my.id
+-etc
 
 First, run the development server:
 
