@@ -3,7 +3,11 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 
-
+<p align="center">
+  <a href="https://github.com/himangmyid/portofolio-v2">
+    <img src="https://github-readme-stats.vercel.app/api/pin/?username=himangmyid&repo=portofolio-v2&theme=tokyonight" alt="GitHub Repo Card">
+  </a>
+</p>
 
 <hr/>
 <div align="center">
