@@ -30,7 +30,7 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
   </tr>
 </table>
 </div>
-<hr/>
+
 
 ---
 
@@ -39,9 +39,9 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 ### Technologies Used
 - [Next.js v15](https://nextjs.org)
 - [Tailwind CSS v4](https://tailwindcss.com)
-- [Framer Motion](https://www.framer.com/motion/)
+- [Framer Motion](https://framermotion.framer.website/)
 - [React Icons](https://react-icons.github.io/react-icons/)
-- [React Bit](https://bit.dev/)
+- [React Bit](https://www.reactbits.dev/)
 
 ### References
 - [v0.dev](https://v0.dev)
