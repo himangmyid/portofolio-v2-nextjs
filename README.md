@@ -58,7 +58,15 @@ bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+<hr/>
+look for the file in ```src\app\components\ul\ProjectsOverlayComponent.tsx```
 
+```https://api.github.com/users/himangmyid/repos"```, { //change to your github username himangmyid
+
+If you want to change the project and want to remove the project from your github repo
+
+change ```.env.exmple``` to ```.env.local``` fill in your github token
+<hr/>
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
 # Project Screenshots
