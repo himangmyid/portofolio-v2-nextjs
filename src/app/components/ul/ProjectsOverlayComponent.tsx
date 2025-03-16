@@ -32,7 +32,7 @@ export default function ProjectsOverlayComponent() {
   const fetchRepos = async () => {
     setLoading(true);
     try {
-      const response = await fetch("https://api.github.com/users/himangmyid/repos", {
+      const response = await fetch("https://api.github.com/users/himangmyid/repos", { //change to your github username himangmyid
         headers: {
           Authorization: `token ${process.env.NEXT_PUBLIC_GITHUB_TOKEN}`,
         },

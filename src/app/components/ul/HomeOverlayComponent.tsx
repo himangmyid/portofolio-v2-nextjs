@@ -1,7 +1,7 @@
 "use client";
 
 import { OverlayContext } from "@/app/components/ul/OverlayContext";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { motion } from "framer-motion";
 import { FloatingLang } from "@/app/components/floating-lang";
 import { FileText, Sparkles } from "lucide-react";
@@ -10,11 +10,19 @@ import Link from "next/link";
 
 export default function HomeOverlayComponent() {
   const overlayFinished = useContext(OverlayContext);
+  useEffect(() => {
+    // Sembunyikan scroll hanya di halaman Home
+    document.body.style.overflow = "hidden";
 
+    return () => {
+      // Kembalikan scroll saat keluar dari halaman Home
+      document.body.style.overflow = "";
+    };
+  }, []);
   return (
     <>
       {overlayFinished && (
-        <div className="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden px-4 pb-32">
+        <div className="relative w-full  flex flex-col items-center justify-center overflow-hidden px-4 pb-32">
           {/* Background FloatingLang */}
           <div className="absolute inset-0 -z-10">
             <FloatingLang />
