@@ -5,6 +5,7 @@ const nextConfig: NextConfig = {
     images: {
         domains: ["api.dicebear.com"
         ],
+        dangerouslyAllowSVG: true,
     },
 };
 

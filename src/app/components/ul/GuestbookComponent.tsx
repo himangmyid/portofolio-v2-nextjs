@@ -7,9 +7,6 @@ import { Avatar } from "@/app/components/ul/uiGuesbook/avatar";
 import { createClient } from "@supabase/supabase-js";
 import { Github } from "lucide-react";
 import Image from "next/image";
-import { Input } from "@/app/components/ul/uiGuesbook/input";
-import { Separator } from "@/app/components/ul/uiGuesbook/separator";
-
 
 // Define types
 interface GuestbookEntry {
@@ -61,6 +58,34 @@ const colorClasses = [
     "text-cyan-400",
 ];
 
+// Mock data for development when Supabase isn't configured
+const mockEntries = [
+    {
+        id: "1",
+        created_at: new Date().toISOString(),
+        user_id: "mock-user-1",
+        message:
+            "This is a sample message in the guestbook. Connect Supabase to see real data!",
+        user_name: "Demo User",
+        user_avatar_url: "https://api.dicebear.com/7.x/avataaars/svg?seed=demo",
+        likes: 5,
+        color_class: "text-blue-400",
+        liked_by_current_user: false,
+    },
+    {
+        id: "2",
+        created_at: new Date(Date.now() - 86400000).toISOString(),
+        user_id: "mock-user-2",
+        message: "Great portfolio! Looking forward to seeing more of your work.",
+        user_name: "Sample Visitor",
+        user_avatar_url:
+            "https://api.dicebear.com/7.x/avataaars/svg?seed=visitor",
+        likes: 3,
+        color_class: "text-purple-400",
+        liked_by_current_user: true,
+    },
+];
+
 export default function GuestbookPage() {
     const [entries, setEntries] = useState<GuestbookEntry[]>([]);
     const [newMessage, setNewMessage] = useState("");
@@ -68,34 +93,6 @@ export default function GuestbookPage() {
     const [loading, setLoading] = useState(true);
     const [submitting, setSubmitting] = useState(false);
     const [sortBy, setSortBy] = useState<"newest" | "likes">("newest");
-
-    // Mock data for development when Supabase isn't configured
-    const mockEntries = [
-        {
-            id: "1",
-            created_at: new Date().toISOString(),
-            user_id: "mock-user-1",
-            message:
-                "This is a sample message in the guestbook. Connect Supabase to see real data!",
-            user_name: "Demo User",
-            user_avatar_url: "https://api.dicebear.com/7.x/avataaars/svg?seed=demo",
-            likes: 5,
-            color_class: "text-blue-400",
-            liked_by_current_user: false,
-        },
-        {
-            id: "2",
-            created_at: new Date(Date.now() - 86400000).toISOString(),
-            user_id: "mock-user-2",
-            message: "Great portfolio! Looking forward to seeing more of your work.",
-            user_name: "Sample Visitor",
-            user_avatar_url:
-                "https://api.dicebear.com/7.x/avataaars/svg?seed=visitor",
-            likes: 3,
-            color_class: "text-purple-400",
-            liked_by_current_user: true,
-        },
-    ];
 
     // Check if user is authenticated
     useEffect(() => {
@@ -236,7 +233,7 @@ export default function GuestbookPage() {
         };
 
         fetchEntries();
-    }, [sortBy, user, mockEntries]); // Tambahkan mockEntries ke dependency array
+    }, [sortBy, user]); // Hapus mockEntries dari dependency array
 
     // Sign in with GitHub
     const signInWithGitHub = async () => {
