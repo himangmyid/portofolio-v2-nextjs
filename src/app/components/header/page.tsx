@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home, User, Book, Briefcase, FileText, Mail, Menu, X } from "lucide-react";
+import { Home, User, Book, Briefcase, FileText, MailPlus, Mail, Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import GradientText from "@/app/components/GradientText/GradientText";
 export default function Header() {
@@ -15,7 +15,8 @@ export default function Header() {
     { name: "About", href: "/about", icon: User, color: "text-sky-400 group-hover:text-sky-300" },
     { name: "Education", href: "/education", icon: Book, color: "text-violet-400 group-hover:text-violet-300" },
     { name: "Projects", href: "/projects", icon: Briefcase, color: "text-orange-400 group-hover:text-orange-300" },
-    { name: "Resume", href: "/resume", icon: FileText, color: "text-yellow-400 group-hover:text-yellow-300" },
+    { name: "Guestbook", href: "/guestbook", icon: MailPlus, color: "text-yellow-400 group-hover:text-yellow-300" },
+      { name: "Resume", href: "/resume", icon: FileText, color: "text-yellow-400 group-hover:text-yellow-300" },
     { name: "Contact", href: "/contact", icon: Mail, color: "text-rose-400 group-hover:text-rose-300" },
   ];
 
