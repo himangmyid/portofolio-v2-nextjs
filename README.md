@@ -2,7 +2,7 @@
 ---
 
 
-# Addition of My Portfolio Guestbook page V2 - NextJS
+# Addition of My Portfolio V2 page Guestbook - NextJS
 ---
 <p align="center">
   <a href="https://github.com/himangmyid/portofolio-v2">
