@@ -1,5 +1,5 @@
 # Portfolio v2 NEXT.JS Guestbook login Github
-## Addition of My Portfolio V2 page Guestbook - NextJS
+## Addition of page Guestbook, in My Portfolio V2  - NextJS
 ---
 <p align="center">
   <a href="https://github.com/himangmyid/portofolio-v2-nextjs">
