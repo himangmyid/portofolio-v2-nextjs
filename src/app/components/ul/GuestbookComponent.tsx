@@ -6,6 +6,10 @@ import { Textarea } from "@/app/components/ul/uiGuesbook/textarea";
 import { Avatar } from "@/app/components/ul/uiGuesbook/avatar";
 import { createClient } from "@supabase/supabase-js";
 import { Github } from "lucide-react";
+import Image from "next/image";
+import { Input } from "@/app/components/ul/uiGuesbook/input";
+import { Separator } from "@/app/components/ul/uiGuesbook/separator";
+
 
 // Define types
 interface GuestbookEntry {
@@ -232,7 +236,7 @@ export default function GuestbookPage() {
         };
 
         fetchEntries();
-    }, [sortBy, user]);
+    }, [sortBy, user, mockEntries]); // Tambahkan mockEntries ke dependency array
 
     // Sign in with GitHub
     const signInWithGitHub = async () => {
@@ -459,7 +463,13 @@ export default function GuestbookPage() {
                         <div className="flex items-center justify-between bg-gray-900 p-4 rounded-lg">
                             <div className="flex items-center gap-3">
                                 <Avatar>
-                                    <img src={user.avatar_url} alt={user.name} />
+                                    <Image
+                                        src={user.avatar_url}
+                                        alt={user.name}
+                                        width={40}
+                                        height={40}
+                                        className="rounded-full"
+                                    />
                                 </Avatar>
                                 <div>
                                     <p>
@@ -541,9 +551,12 @@ export default function GuestbookPage() {
                                     <div className="flex items-start justify-between mb-3">
                                         <div className="flex items-center gap-3">
                                             <Avatar className="h-10 w-10 border border-sky-700">
-                                                <img
+                                                <Image
                                                     src={entry.user_avatar_url}
                                                     alt={entry.user_name}
+                                                    width={40}
+                                                    height={40}
+                                                    className="rounded-full"
                                                 />
                                             </Avatar>
                                             <div>
