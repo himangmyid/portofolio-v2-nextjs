@@ -38,8 +38,10 @@ interface User {
 }
 
 // Create Supabase client with mock data for development
-const supabaseUrl = process.env.SUPABASE_URL || "https://example.supabase.co";
-const supabaseAnonKey = process.env.SUPABASE_ANON_KEY || "your-anon-key";
+const supabaseUrl =
+    import.meta.env.SUPABASE_URL || "https://example.supabase.co";
+const supabaseAnonKey =
+    import.meta.env.SUPABASE_ANON_KEY || "your-anon-key";
 
 // Create a mock Supabase client if real credentials aren't available
 const supabase = createClient(supabaseUrl, supabaseAnonKey);
@@ -253,7 +255,7 @@ export default function GuestbookPage() {
                 provider: "github",
                 options: {
                     redirectTo:
-                        "https://guestbook-test-git-main-himangs-projects.vercel.app/guestbook",
+                        "https://portofolio-v2-nextjs.vercel.app/guestbook",
                 },
             });
         } catch (error) {
