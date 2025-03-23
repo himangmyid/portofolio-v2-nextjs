@@ -15,6 +15,7 @@ interface GuestbookEntry {
     user_id: string;
     message: string;
     user_name: string;
+    user_username: string; // Kolom baru untuk username
     user_avatar_url: string;
     likes: number;
     color_class: string;
@@ -27,6 +28,7 @@ interface GuestbookEntryFromDB {
     user_id: string;
     message: string;
     user_name: string;
+    user_username: string; // Kolom baru untuk username
     user_avatar_url: string;
     likes: number;
 }
@@ -34,6 +36,7 @@ interface GuestbookEntryFromDB {
 interface User {
     id: string;
     name: string;
+    username: string; // Kolom baru untuk username
     avatar_url: string;
 }
 
@@ -42,7 +45,6 @@ const supabaseUrl =
     process.env.NEXT_PUBLIC_SUPABASE_URL || "https://example.supabase.co";
 const supabaseAnonKey =
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "your-anon-key";
-
 
 // Create a mock Supabase client if real credentials aren't available
 const supabase = createClient(supabaseUrl, supabaseAnonKey);
@@ -70,6 +72,7 @@ const mockEntries = [
         message:
             "This is a sample message in the guestbook. Connect Supabase to see real data!",
         user_name: "Demo User",
+        user_username: "@demouser", // Contoh username
         user_avatar_url: "https://api.dicebear.com/7.x/avataaars/svg?seed=demo",
         likes: 5,
         color_class: "text-blue-400",
@@ -81,6 +84,7 @@ const mockEntries = [
         user_id: "mock-user-2",
         message: "Great portfolio! Looking forward to seeing more of your work.",
         user_name: "Sample Visitor",
+        user_username: "@samplevisitor", // Contoh username
         user_avatar_url:
             "https://api.dicebear.com/7.x/avataaars/svg?seed=visitor",
         likes: 3,
@@ -121,9 +125,11 @@ export default function GuestbookPage() {
                         setUser({
                             id: user.id,
                             name:
-                                user.user_metadata.user_name ||
-                                user.user_metadata.preferred_username ||
-                                "Anonymous",
+                                user.user_metadata.full_name ||
+                                user.user_metadata.name ||
+                                "Anonymous", // Nama display
+                            username:
+                                user.user_metadata.preferred_username || "user", // Username
                             avatar_url: user.user_metadata.avatar_url || "",
                         });
                     }
@@ -149,9 +155,11 @@ export default function GuestbookPage() {
                 setUser({
                     id: user.id,
                     name:
-                        user.user_metadata.user_name ||
-                        user.user_metadata.preferred_username ||
-                        "Anonymous",
+                        user.user_metadata.full_name ||
+                        user.user_metadata.name ||
+                        "Anonymous", // Nama display
+                    username:
+                        user.user_metadata.preferred_username || "user", // Username
                     avatar_url: user.user_metadata.avatar_url || "",
                 });
             }
@@ -168,9 +176,11 @@ export default function GuestbookPage() {
                     setUser({
                         id: session.user.id,
                         name:
-                            session.user.user_metadata.user_name ||
-                            session.user.user_metadata.preferred_username ||
-                            "Anonymous",
+                            session.user.user_metadata.full_name ||
+                            session.user.user_metadata.name ||
+                            "Anonymous", // Nama display
+                        username:
+                            session.user.user_metadata.preferred_username || "user", // Username
                         avatar_url: session.user.user_metadata.avatar_url || "",
                     });
                 } else {
@@ -236,7 +246,7 @@ export default function GuestbookPage() {
         };
 
         fetchEntries();
-    }, [sortBy, user]); // Hapus mockEntries dari dependency array
+    }, [sortBy, user]);
 
     // Sign in with GitHub
     const signInWithGitHub = async () => {
@@ -246,6 +256,7 @@ export default function GuestbookPage() {
             setUser({
                 id: "mock-user-id",
                 name: "Mock GitHub User",
+                username: "@mockuser", // Contoh username
                 avatar_url: "https://api.dicebear.com/7.x/avataaars/svg?seed=github",
             });
             return;
@@ -295,6 +306,7 @@ export default function GuestbookPage() {
                 user_id: user.id,
                 message: newMessage.trim(),
                 user_name: user.name,
+                user_username: user.username, // Simpan username
                 user_avatar_url: user.avatar_url,
                 likes: 0,
                 color_class:
@@ -316,6 +328,7 @@ export default function GuestbookPage() {
                     user_id: user.id,
                     message: newMessage.trim(),
                     user_name: user.name,
+                    user_username: user.username, // Simpan username
                     user_avatar_url: user.avatar_url,
                     likes: 0,
                 },
@@ -476,6 +489,9 @@ export default function GuestbookPage() {
                                         Signed in as{" "}
                                         <span className="font-semibold">{user.name}</span>
                                     </p>
+                                    <p className="text-xs text-gray-400">
+                                        @{user.username}
+                                    </p>
                                 </div>
                             </div>
                             <Button className="bg-sky-950" variant="outline" onClick={signOut}>
@@ -564,14 +580,7 @@ export default function GuestbookPage() {
                                                     {entry.user_name}
                                                 </p>
                                                 <p className="text-xs text-gray-400">
-                                                    {new Date(entry.created_at).toLocaleDateString(
-                                                        "en-US",
-                                                        {
-                                                            year: "numeric",
-                                                            month: "short",
-                                                            day: "numeric",
-                                                        },
-                                                    )}
+                                                    @{entry.user_username}
                                                 </p>
                                             </div>
                                         </div>
