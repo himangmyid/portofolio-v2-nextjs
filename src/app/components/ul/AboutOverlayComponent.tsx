@@ -4,8 +4,9 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { useEffect, useState, useContext } from "react";
 import { TechStack } from "@/app/components/ul/techstack";
-import { Globe, Instagram, Linkedin, Youtube, Github, Music2 } from "lucide-react";
+import { Globe, Instagram, Linkedin, Youtube, Github, Music2, Download  } from "lucide-react";
 import { OverlayContext } from "@/app/components/ul/OverlayContext";
+import EducationOverlayComponent from "@/app/components/ul/EducationOverlayComponent";
 
 
 export default function AboutMe() {
@@ -57,7 +58,8 @@ export default function AboutMe() {
                   alt="Profile Picture" 
                   height={700} 
                   width={700} 
-                  className="rounded-full w-full h-full object-cover" 
+                  className="rounded-full w-full h-full object-cover"
+                  priority={true}
                 />
               </motion.div>
             </div>
@@ -77,6 +79,38 @@ export default function AboutMe() {
             </motion.p>
           </motion.div>
         </motion.section>
+
+       
+          {/* Resume Section */}
+          {/* Compact Resume Section */}
+<motion.div 
+  className=" bg-sky-900/10 backdrop-blur-xs rounded-lg "
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ delay: 0.3, duration: 0.5 }}
+>
+  <div className="flex items-center justify-between gap-4">
+    <div>
+      <h3 className="text-xl font-semibold text-sky-300 flex items-center gap-2">
+        <Download className="w-5 h-5" />
+        My Resume
+      </h3>
+      <p className="text-sm text-gray-400 mt-1">PDF, ~1MB</p>
+    </div>
+    
+    <motion.a
+      href="/Las-Benidiktus Himang-CV.pdf"
+      download
+      whileHover={{ scale: 1.03 }}
+      whileTap={{ scale: 0.98 }}
+      className="text-sm px-4 py-2 bg-sky-800/50 hover:bg-sky-700/60 rounded-md transition-all flex items-center gap-1"
+    >
+      <Download className="w-4 h-4" />
+      Download
+    </motion.a>
+  </div>
+</motion.div>
+
         
 <motion.div 
   className="flex flex-wrap gap-4 justify-center mt-8"
@@ -151,10 +185,12 @@ export default function AboutMe() {
   </motion.a>
 </motion.div>
       </div>
+          <EducationOverlayComponent />
       <div className="mt-40 md:mt-0 border-4 border-dashed border-blue-500/5">
   <TechStack/>
   </div>
   </motion.div>
+
       )}
     </>
   );
