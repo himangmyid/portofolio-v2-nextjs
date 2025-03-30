@@ -42,9 +42,9 @@ interface User {
 
 // Create Supabase client with mock data for development
 const supabaseUrl =
-    process.env.SUPABASE_URL || "https://example.supabase.co";
+    process.env.NEXT_PUBLIC_SUPABASE_URL || "https://example.supabase.co";
 const supabaseAnonKey =
-    process.env.SUPABASE_ANON_KEY || "your-anon-key";
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "your-anon-key";
 
 // Create a mock Supabase client if real credentials aren't available
 const supabase = createClient(supabaseUrl, supabaseAnonKey);
