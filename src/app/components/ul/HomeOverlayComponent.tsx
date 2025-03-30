@@ -63,10 +63,10 @@ export default function HomeOverlayComponent() {
                   About Me
                 </button>
               </Link>
-              <Link href="/resume">
+             <Link href="/blog">
                 <button className="flex items-center gap-2 border border-white text-white text-lg font-medium px-5 py-3 rounded-lg hover:bg-white/20 hover:scale-105 hover:shadow-lg transition">
                   <Sparkles className="h-5 w-5" />
-                  My Resume
+                  My Blog
                 </button>
               </Link>
             </motion.div>
