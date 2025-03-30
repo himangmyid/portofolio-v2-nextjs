@@ -1,9 +1,10 @@
+// src\app\components\ul\CertificateOverlayComponent.tsx
 "use client";
 
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { OverlayContext } from "@/app/components/ul/OverlayContext";
 import { motion } from "framer-motion";
-import { Award, ExternalLink } from "lucide-react";
+import { Award, ExternalLink, ChevronDown, ChevronUp } from "lucide-react";
 import Image from "next/image";
 
 const certificatesData = [
@@ -71,6 +72,10 @@ const certificatesData = [
 
 export default function EducationOverlayComponent() {
     const overlayFinished = useContext(OverlayContext);
+    const [showAll, setShowAll] = useState(false);
+    
+    // Determine which certificates to display
+    const displayedCertificates = showAll ? certificatesData : certificatesData.slice(0, 3);
 
     const getDriveUrl = (fileId: string) => ({
         preview: `https://drive.google.com/thumbnail?id=${fileId}&sz=w1000`,
@@ -100,7 +105,7 @@ export default function EducationOverlayComponent() {
                             </h2>
 
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                                {certificatesData.map((cert, index) => {
+                                {displayedCertificates.map((cert, index) => {
                                     const driveUrls = getDriveUrl(cert.fileId);
 
                                     return (
@@ -168,6 +173,28 @@ export default function EducationOverlayComponent() {
                                     );
                                 })}
                             </div>
+
+                            {/* Read More/Less Button */}
+                            {certificatesData.length > 3 && (
+                                <div className="flex justify-center mt-8">
+                                    <button
+                                        onClick={() => setShowAll(!showAll)}
+                                        className="flex items-center px-6 py-3 bg-sky-700/50 hover:bg-sky-700/70 text-sky-100 rounded-lg transition-all border border-sky-500/30"
+                                    >
+                                        {showAll ? (
+                                            <>
+                                                <ChevronUp className="w-5 h-5 mr-2" />
+                                                Show Less
+                                            </>
+                                        ) : (
+                                            <>
+                                                <ChevronDown className="w-5 h-5 mr-2" />
+                                                Show More ({certificatesData.length - 3} more)
+                                            </>
+                                        )}
+                                    </button>
+                                </div>
+                            )}
                         </motion.div>
                     </div>
                 </motion.div>

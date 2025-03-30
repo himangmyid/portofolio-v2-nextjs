@@ -79,8 +79,8 @@ export default async function BlogDetailPage({ params }: Props) {
 
     return (
         <main className="container mx-auto px-4 py-12 max-w-3xl">
-          <article className="bg-white dark:bg-sky-800/20 rounded-xl shadow-lg p-6 sm:p-8">
-            <h1 className="text-3xl font-bold text-gray-800 dark:text-white mb-4">
+          <article className="bg-sky-800/20 rounded-xl shadow-lg p-6 sm:p-8">
+            <h1 className="text-3xl font-bold text-blue-300 mb-4">
               {post.title}
             </h1>
 
@@ -102,21 +102,23 @@ export default async function BlogDetailPage({ params }: Props) {
             ))}
 
             <div
-                className="prose dark:prose-invert prose-lg max-w-none
-              prose-headings:text-gray-800 dark:prose-headings:text-white
-              prose-a:text-blue-600 dark:prose-a:text-blue-400
+                className="prose prose-invert prose-lg max-w-none
+              prose-headings:text-sky-300
+              prose-a:text-blue-400
               prose-img:rounded-xl prose-img:shadow-lg"
                 dangerouslySetInnerHTML={{ __html: cleanContent }}
             />
 
-            <div className="mt-12">
-              <Link
-                  href="/blog"
-                  className="text-blue-600 dark:text-blue-400 hover:underline font-medium"
-              >
-                &larr; Back to Blog
-              </Link>
-            </div>
+<div className="mt-12 text-center">
+  <Link
+    href="/blog"
+    className="inline-flex items-center px-4 py-2 border border-gray-600 rounded-md
+              bg-gray-800 text-sky-300 hover:bg-gray-700
+              transition-colors  mx-auto"
+  >
+    Back to Blog
+  </Link>
+</div>
           </article>
         </main>
     );

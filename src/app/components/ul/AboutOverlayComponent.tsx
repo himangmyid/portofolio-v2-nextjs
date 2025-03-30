@@ -67,7 +67,7 @@ export default function AboutMe() {
 
           {/* Text Content */}
           <motion.div className="flex-grow my-5 mx-5 max-w-3xl" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }}>
-            <h1 className="text-4xl  font-semibold text-blue-400 dark:text-blue-300 mb-6">👨‍💻 About Me</h1>
+            <h1 className="text-4xl  font-semibold text-blue-300 mb-6">👨‍💻 About Me</h1>
             <motion.p className="text-base sm:text-lg text-gray-300 leading-relaxed" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }}>
               I am a student at <span className="text-blue-400">STMIK Widya Cipta Dharma</span> majoring in <span className="text-blue-400">Informatics Engineering</span>, currently exploring <span className="text-blue-400">web development</span>, both in <span className="text-blue-400">frontend</span> and <span className="text-blue-400">backend</span>, using technologies such as <span className="text-blue-400">Next.js</span>.
             </motion.p>

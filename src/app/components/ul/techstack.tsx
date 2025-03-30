@@ -27,10 +27,7 @@ export function TechStack() {
             <h3 className="text-3xl font-bold text-center mb-8 text-blue-400">Tech Stack That I Use</h3>
 
             {/* Main container */}
-            <div className="relative  overflow-hidden">
-                {/* Gradient overlay */}
-                <div className="absolute inset-y-0 left-0 w-10 bg-gradient-to-r from-sky-900 to-transparent z-10 pointer-events-none" />
-                <div className="absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-sky-900 to-transparent z-10 pointer-events-none" />
+            <div className="relative  overflow-hidden mask-x-from-70% mask-x-to-100%">
 
                 {/* Marquee container */}
                 <div className="marquee">

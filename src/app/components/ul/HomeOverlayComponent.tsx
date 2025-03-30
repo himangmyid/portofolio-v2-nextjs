@@ -35,9 +35,9 @@ export default function HomeOverlayComponent() {
             transition={{ duration: 0.5 }}
             className="w-full max-w-screen-xl text-center"
           >
-            <h1 className="text-3xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-snug">
+            <h1 className="text-3xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-snug text-shadow-lg/100">
   Coding is fun... <br />
-  until you see <span className="text-green-400">&apos;undefined is not a function&apos;</span> 😭
+  until you see <span className="text-green-400 text-shadow-lg/100">&apos;undefined is not a function&apos;</span> 😭
 </h1>
 
 
@@ -63,7 +63,7 @@ export default function HomeOverlayComponent() {
                   About Me
                 </button>
               </Link>
-             <Link href="/blog">
+              <Link href="/blog">
                 <button className="flex items-center gap-2 border border-white text-white text-lg font-medium px-5 py-3 rounded-lg hover:bg-white/20 hover:scale-105 hover:shadow-lg transition">
                   <Sparkles className="h-5 w-5" />
                   My Blog
@@ -72,7 +72,7 @@ export default function HomeOverlayComponent() {
             </motion.div>
           </motion.div>
 
-       
+
           <div className="absolute bottom-0 right-5 md:bottom-5 md:right-10 w-40 h-40 md:w-64 md:h-64 z-10">
             <Mee />
           </div>

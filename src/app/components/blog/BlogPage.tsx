@@ -24,15 +24,18 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
     return (
         <div className="container mx-auto px-4 py-24 max-w-3xl lg:py-24 lg:px-8">
             <header className="mb-12 text-center">
-                <h1 className="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-2">
+                <h1 className="text-3xl md:text-4xl font-bold text-sky-300 mb-2">
                     Latest Articles
                 </h1>
-                <p className="text-gray-600 dark:text-gray-400">
+                <p className="text-sky-500 mb-5">
                     Explore my writing collection, this data is taken from the blogger API
                 </p>
-                <a href="https://www.himang.my.id/" className="text-blue-600 hover:underline">
-                    Himang.my.id
-                </a>
+                <a 
+  href="https://www.himang.my.id/" 
+  className="inline-block px-4 py-2 rounded-lg border border-sky-500/30 bg-sky-800/20 text-blue-400 hover:text-blue-300 hover:bg-sky-800/30 transition-all duration-300 hover:shadow-[0_0_8px_rgba(56,189,248,0.3)]"
+>
+  Himang.my.id
+</a>
             </header>
 
             <div className="space-y-6">
@@ -43,7 +46,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
 
             {posts.length === 0 && (
                 <div className="text-center py-12">
-                    <p className="text-gray-500 dark:text-gray-400">No articles available</p>
+                    <p className="text-gray-400">No articles available</p>
                 </div>
             )}
 

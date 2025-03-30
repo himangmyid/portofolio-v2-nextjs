@@ -41,8 +41,8 @@ export default function PaginationControls({
                     <Link
                         href={buildHref('prev')}
                         scroll={false}
-                        className="inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md
-              bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700
+                        className="inline-flex items-center px-4 py-2 border border-gray-600 rounded-md
+              bg-sky-800/20 text-sky-300 hover:bg-gray-700
               transition-colors"
                     >
                         &larr; Previous
@@ -50,15 +50,15 @@ export default function PaginationControls({
                 ) : (
                     <button
                         disabled
-                        className="px-4 py-2 border border-gray-200 dark:border-gray-700 rounded-md
-              bg-gray-100 dark:bg-gray-800 text-gray-400 dark:text-gray-600 cursor-not-allowed"
+                        className="px-4 py-2 border border-gray-700 rounded-md
+            bg-sky-800/20 text-sky-600 cursor-not-allowed"
                     >
                         &larr; Previous
                     </button>
                 )}
             </div>
 
-            <div className="text-sm text-gray-600 dark:text-gray-400">
+            <div className="text-sm text-gray-400">
                 Page {currentPage}
             </div>
 
@@ -67,8 +67,8 @@ export default function PaginationControls({
                     <Link
                         href={buildHref('next')}
                         scroll={false}
-                        className="inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md
-              bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700
+                        className="inline-flex items-center px-4 py-2 border border-gray-600 rounded-md
+              bg-sky-800/20 text-sky-300 hover:bg-gray-700
               transition-colors"
                     >
                         Next &rarr;
@@ -76,8 +76,8 @@ export default function PaginationControls({
                 ) : (
                     <button
                         disabled
-                        className="px-4 py-2 border border-gray-200 dark:border-gray-700 rounded-md
-              bg-gray-100 dark:bg-gray-800 text-gray-400 dark:text-gray-600 cursor-not-allowed"
+                        className="px-4 py-2 border border-gray-700 rounded-md
+            bg-sky-800/20 text-sky-600 cursor-not-allowed"
                     >
                         Next &rarr;
                     </button>

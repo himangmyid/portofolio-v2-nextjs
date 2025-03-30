@@ -5,7 +5,7 @@ const AuthorCard = ({ author, date }: {
     date: string
 }) => {
     return (
-        <div className="flex items-center p-4 bg-gray-100 dark:bg-gray-700/20 rounded-lg">
+        <div className="flex items-center p-4 bg-gray-700/20 rounded-lg">
             <div className="relative w-10 h-10">
                 <Image
                     src={author.image.url}
@@ -16,8 +16,8 @@ const AuthorCard = ({ author, date }: {
                 />
             </div>
             <div className="ml-4">
-                <p className="font-medium text-gray-800 dark:text-gray-100">{author.displayName}</p>
-                <p className="text-sm text-gray-600 dark:text-gray-300">
+                <p className="font-medium text-gray-100">{author.displayName}</p>
+                <p className="text-sm text-gray-200">
                     {new Date(date).toLocaleDateString('en-US', {
                         year: 'numeric',
                         month: 'short',

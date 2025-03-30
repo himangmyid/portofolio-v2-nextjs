@@ -18,7 +18,7 @@ export default async function BlogListPage({
     const resolvedSearchParams = await searchParams;
 
     return (
-        <section className="min-h-screen bg-gray-50 dark:bg-sky-900/20">
+        <section className="min-h-screen bg-sky-900/20">
             <BlogPage searchParams={resolvedSearchParams} />
         </section>
     );
