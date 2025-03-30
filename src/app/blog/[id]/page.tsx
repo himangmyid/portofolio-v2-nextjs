@@ -12,8 +12,7 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   try {
-    // Await params sebelum mengakses properti
-    const { id } = await params;
+    const { id } = params;
     const post = await fetchPostById(id);
 
     const rawDescription = post?.content || 'Blog post details';
@@ -51,7 +50,7 @@ export async function generateStaticParams() {
   try {
     const posts = await fetchAllPosts();
     return posts.map((post: BlogPost) => ({
-      id: post.id.toString() // Pastikan string
+      id: post.id.toString() // Ensure string
     }));
   } catch (error) {
     console.error('Error generating static params:', error);
@@ -61,8 +60,7 @@ export async function generateStaticParams() {
 
 export default async function BlogDetailPage({ params }: Props) {
   try {
-    // Await params sebelum mengakses properti
-    const { id } = await params;
+    const { id } = params;
     const post = await fetchPostById(id);
 
     if (!post) {
