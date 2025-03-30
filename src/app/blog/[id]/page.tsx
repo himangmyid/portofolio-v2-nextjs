@@ -6,13 +6,15 @@ import DOMPurify from 'isomorphic-dompurify';
 import Link from "next/link";
 import type { BlogPost } from "@/app/lib/blogger";
 
+// Perbaikan 1: Update tipe Props untuk Next.js 15
 type Props = {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   try {
-    const { id } = params;
+    // Perbaikan 2: Gunakan await untuk params
+    const { id } = await params;
     const post = await fetchPostById(id);
 
     const rawDescription = post?.content || 'Blog post details';
@@ -50,7 +52,7 @@ export async function generateStaticParams() {
   try {
     const posts = await fetchAllPosts();
     return posts.map((post: BlogPost) => ({
-      id: post.id.toString() // Ensure string
+      id: post.id.toString()
     }));
   } catch (error) {
     console.error('Error generating static params:', error);
@@ -58,9 +60,11 @@ export async function generateStaticParams() {
   }
 }
 
+// Perbaikan 3: Update komponen utama
 export default async function BlogDetailPage({ params }: Props) {
   try {
-    const { id } = params;
+    // Perbaikan 4: Gunakan await untuk params
+    const { id } = await params;
     const post = await fetchPostById(id);
 
     if (!post) {
