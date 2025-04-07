@@ -1,8 +1,8 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
+
 html,
 body {
     height: 100%;
     margin: 0;
 }
-

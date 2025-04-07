@@ -27,8 +27,8 @@ export function TechStack() {
             <h3 className="text-3xl font-bold text-center mb-8 text-blue-400">Tech Stack That I Use</h3>
 
             {/* Main container */}
-            <div className="relative  overflow-hidden mask-x-from-70% mask-x-to-100%">
-
+            <div className="relative  overflow-hidden mask-radial  mask-x-from-70% mask-x-to-100%">
+                {/* Gradient overlay */}
                 {/* Marquee container */}
                 <div className="marquee">
                     <div className="marquee-content">
@@ -40,7 +40,7 @@ export function TechStack() {
                                 <div className={`icon ${tech.color}`}>
                                     <tech.icon className="w-full h-full" />
                                 </div>
-                                <span className="text-gray-300 text-sm font-medium">{tech.name}</span>
+                                <span className="text-sky-300 text-sm font-medium">{tech.name}</span>
                             </div>
                         ))}
                         {/* Duplicate the items for continuous marquee effect */}
