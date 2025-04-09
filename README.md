@@ -39,6 +39,70 @@
 </table>
 </div>
 
+```
+└── 📁app
+    └── 📁about
+        └── page.tsx
+    └── 📁blog
+        └── 📁[id]
+            └── page.tsx
+        └── page.tsx
+    └── 📁components
+        └── 📁blog
+            └── AuthorCard.tsx
+            └── BlogCard.tsx
+            └── BlogPage.tsx
+            └── PaginationControls.tsx
+        └── floating-lang.tsx
+        └── 📁footer
+            └── page.tsx
+        └── 📁FuzzyText
+            └── FuzzyText.tsx
+        └── 📁GradientText
+            └── GradientText.tsx
+        └── 📁header
+            └── page.tsx
+        └── Marquee.tsx
+        └── sparkles.tsx
+        └── TitleUpdater.tsx
+        └── 📁ul
+            └── AboutOverlayComponent.tsx
+            └── CertificateOverlayComponent.tsx
+            └── 📁ClickSpark
+                └── ClickSpark.tsx
+            └── ContactForm.tsx
+            └── EducationOverlayComponent.tsx
+            └── GuestbookComponent.tsx
+            └── HomeOverlayComponent.tsx
+            └── mee.tsx
+            └── OverlayContext.tsx
+            └── PageOverlay.tsx
+            └── ProjectsOverlayComponent.tsx
+            └── supabase-schema.sql
+            └── techstack.tsx
+            └── 📁uiGuesbook
+                └── avatar.tsx
+                └── button.tsx
+                └── card.tsx
+                └── input.tsx
+                └── separator.tsx
+                └── textarea.tsx
+            └── use-mouse-position.ts
+    └── 📁contact
+        └── page.tsx
+    └── 📁guestbook
+        └── page.tsx
+    └── 📁lib
+        └── blogger.ts
+        └── utils.ts
+    └── 📁projects
+        └── page.tsx
+    └── globals.css
+    └── layout-client.tsx
+    └── layout.tsx
+    └── Not-Found.tsx
+    └── page.tsx
+```
 
 ---
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
